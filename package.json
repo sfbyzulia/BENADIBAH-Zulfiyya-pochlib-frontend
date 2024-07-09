@@ -1,0 +1,16 @@
+{
+  "name": "benadibah-zulfiyya-pochlib-frontend",
+  "version": "1.0.0",
+  "description": "Création d'une interface utilisateur pour l'application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch sass/main.scss:css/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.77.6"
+  }
+}

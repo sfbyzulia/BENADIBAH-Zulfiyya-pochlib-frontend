@@ -1,0 +1,158 @@
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+header {
+  text-align: center;
+}
+header img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#myBooks {
+  text-align: center;
+}
+#myBooks button {
+  margin-bottom: 20px;
+}
+
+#searchForm {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  border: none;
+}
+#searchForm fieldset {
+  border: none;
+}
+#searchForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+#searchForm input[type=text] {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#searchForm button[type=submit] {
+  background-color: #67AF8C;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+}
+#searchForm button[type=button] {
+  background-color: #FC4242;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+}
+
+body {
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  header, #myBooks {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    padding: 40px;
+  }
+  header, #myBooks {
+    max-width: 960px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
