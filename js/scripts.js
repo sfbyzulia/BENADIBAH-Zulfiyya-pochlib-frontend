@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create and add the "Add a book" button
     const addButton = document.createElement('button');
-    addButton.textContent = 'Add a book';
+    addButton.textContent = 'Ajouter un livre';
     addButton.className = 'roboto-medium';
+    addButton.style.margin = '0 auto';
     addButton.onclick = showSearchForm;
     myBooksDiv.insertBefore(addButton, myBooksDiv.querySelector('hr'));
 

@@ -72,11 +72,26 @@
 
 header {
   text-align: center;
+  padding: 20px 0;
 }
 header img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 200px;
+}
+
+.title-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 10px auto;
+}
+
+.title {
+  background-color: #f0f0f0;
+  display: block;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
 }
 
 #myBooks {
@@ -84,6 +99,16 @@ header img {
 }
 #myBooks button {
   margin-bottom: 20px;
+  background-color: #469488;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
 }
 
 #searchForm {
@@ -155,6 +180,12 @@ header img {
   margin: 5px 0;
 }
 
+img[alt="Couverture du livre"] {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
 body {
   padding: 10px;
   font-family: "Roboto", sans-serif;
@@ -164,7 +195,7 @@ body {
   body {
     padding: 20px;
   }
-  header, #myBooks {
+  header, .title-container, #myBooks {
     max-width: 750px;
     margin: 0 auto;
   }
@@ -173,7 +204,7 @@ body {
   body {
     padding: 40px;
   }
-  header, #myBooks {
+  header, .title-container, #myBooks {
     max-width: 960px;
   }
 }

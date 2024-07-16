@@ -72,17 +72,42 @@
 
 header {
   text-align: center;
+  padding: 20px 0;
   img {
     display: block;
     margin: 0 auto;
-    max-width: 100%; // Ensures logo does not exceed the screen width
+    max-width: 200px; // Ensures logo does not exceed the screen width
   }
+}
+
+.title-container {
+  width: 100%;
+  max-width: 750px; // Same width as header content
+  margin: 10px auto; // Center the title block
+}
+
+.title {
+  background-color: #f0f0f0; // Light grey background for the title
+  display: block;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
 }
 
 #myBooks {
   text-align: center;
   button {
     margin-bottom: 20px; // Space before the form
+    background-color: #469488; // Green color for the button
+    color: white;
+    padding: 15px 30px; // Larger padding for bigger button
+    font-size: 18px; // Larger font size
+    border-radius: 8px; // Rounded corners
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
   }
 }
 
@@ -156,6 +181,13 @@ header {
   margin: 5px 0;
 }
 
+// Style for unavailable image
+img[alt="Couverture du livre"] {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
 // Base styles for mobile
 body {
   padding: 10px;
@@ -168,7 +200,7 @@ body {
     padding: 20px;
   }
 
-  header, #myBooks {
+  header, .title-container, #myBooks {
     max-width: 750px;
     margin: 0 auto; // Center the content
   }
@@ -180,7 +212,7 @@ body {
     padding: 40px; // More space on the sides for larger screens
   }
 
-  header, #myBooks {
+  header, .title-container, #myBooks {
     max-width: 960px; // Limit width to avoid elements being too stretched
   }
 }
