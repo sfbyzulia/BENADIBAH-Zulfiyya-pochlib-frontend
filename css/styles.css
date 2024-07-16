@@ -132,6 +132,29 @@ header img {
   margin-top: 10px;
 }
 
+#searchResults {
+  margin-top: 20px;
+}
+
+.book {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(50% - 20px);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.book h3 {
+  margin-top: 0;
+}
+
+.book p {
+  margin: 5px 0;
+}
+
 body {
   padding: 10px;
   font-family: "Roboto", sans-serif;
