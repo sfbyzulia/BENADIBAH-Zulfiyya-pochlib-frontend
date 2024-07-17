@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.createElement('button');
     addButton.textContent = 'Ajouter un livre';
     addButton.className = 'roboto-medium';
-    addButton.style.margin = '0 auto';
     addButton.onclick = showSearchForm;
     myBooksDiv.insertBefore(addButton, myBooksDiv.querySelector('hr'));
 
@@ -76,8 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         searchResults.id ='searchResults';
         myBooksDiv.insertBefore(searchResults, myBooksDiv.querySelector('hr'));
 
-        
-        
         if (!books || books.length === 0) {
             searchResults.textContent = 'Aucun livre n’a été trouvé';
             return;

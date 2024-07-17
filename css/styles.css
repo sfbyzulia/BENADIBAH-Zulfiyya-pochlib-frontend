@@ -106,8 +106,7 @@ header img {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  text-align: center;
+  display: block;
   margin: 0 auto;
 }
 
