@@ -250,3 +250,10 @@ body {
     max-width: 960px; // Limit width to avoid elements being too stretched
   }
 }
+
+// Media query for mobile devices
+@media (max-width: 767px) {
+  .book {
+    width: calc(100% - 20px); // Adjust to fit one book per row on mobile devices
+  }
+}

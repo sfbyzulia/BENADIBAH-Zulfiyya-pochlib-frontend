@@ -241,5 +241,10 @@ body {
     max-width: 960px;
   }
 }
+@media (max-width: 767px) {
+  .book {
+    width: calc(100% - 20px);
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
