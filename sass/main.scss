@@ -100,7 +100,7 @@ header {
 
 #myBooks {
   text-align: center;
-  button {
+  .main-button { // Specific class for the main button to keep the background color
     margin-bottom: 20px; // Space before the form
     background-color: $primary-color; // Green color for the button
     color: white;
@@ -163,14 +163,18 @@ header {
 // Styles for search results
 #searchResults {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .book {
-  position: relative;
+  position: relative; // Ensure this is relative for absolute positioning of buttons
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   vertical-align: top;
   width: calc(50% - 20px); // Adjust to fit two books per row
   box-sizing: border-box;
@@ -185,19 +189,20 @@ header {
   margin: 5px 0;
 }
 
-.bookmark-button {
-  background-color: $primary-color;
+// New styles for buttons "Save", "Saved" and "Delete"
+.button-icon {
   border: none;
-  color: white;
-  padding: 10px 24px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 6px;
+  background: none;
   cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
+  padding: 0;
+}
+
+.button-icon img {
+  width: 20px; // Adjust the size of the icons
+  height: 20px; // Adjust the size of the icons
 }
 
 // Style for book cover images

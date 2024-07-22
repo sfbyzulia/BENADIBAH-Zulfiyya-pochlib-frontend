@@ -97,7 +97,7 @@ header img {
 #myBooks {
   text-align: center;
 }
-#myBooks button {
+#myBooks .main-button {
   margin-bottom: 20px;
   background-color: #469488;
   color: white;
@@ -158,6 +158,9 @@ header img {
 
 #searchResults {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .book {
@@ -165,7 +168,8 @@ header img {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   vertical-align: top;
   width: calc(50% - 20px);
   box-sizing: border-box;
@@ -180,27 +184,19 @@ header img {
   margin: 5px 0;
 }
 
-.bookmark-button {
-  background-color: #469488;
+.button-icon {
   border: none;
-  color: white;
-  padding: 10px 24px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 6px;
+  background: none;
   cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
+  padding: 0;
 }
 
-.bookmark-button:hover {
-  background-color: #367a6a;
-}
-
-.bookmark-button:focus {
-  outline: 2px solid #ffffff;
+.button-icon img {
+  width: 20px;
+  height: 20px;
 }
 
 .book-cover {

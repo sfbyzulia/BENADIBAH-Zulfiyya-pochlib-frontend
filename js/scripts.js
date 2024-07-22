@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create and add the "Add a book" button
     const addButton = document.createElement('button');
     addButton.textContent = 'Ajouter un livre';
-    addButton.className = 'roboto-medium';
+    addButton.className = 'main-button';
     addButton.onclick = showSearchForm;
     myBooksDiv.insertBefore(addButton, myBooksDiv.querySelector('hr'));
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (title === '' && author === '') {
             alert('Veuillez entrer un titre ou un auteur.');
             return;
-    }
+        }
 
         let query = '';
         if (title !== '') {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             query += `inauthor:${author}`;
         }
 
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${title}+inauthor:${author}`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
             .then(response => response.json())
             .then(data => displaySearchResults(data.items))
             .catch(error => console.error('Erreur lors de la recherche des livres :', error));
@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
+
         books.forEach(book => {
             const bookElement = document.createElement('div');
             bookElement.className = 'book';
@@ -117,16 +119,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const author = book.volumeInfo.authors[0];
             let description;
 
-             if (book.volumeInfo.description) {
-                 if (book.volumeInfo.description.length > 200) {
-                     description = book.volumeInfo.description.substring(0, 200) + '...';
-                  } else {
-                      description = book.volumeInfo.description;
-                  }
-             } else {
-                    description = 'Information manquante';
+            if (book.volumeInfo.description) {
+                if (book.volumeInfo.description.length > 200) {
+                    description = book.volumeInfo.description.substring(0, 200) + '...';
+                } else {
+                    description = book.volumeInfo.description;
+                }
+            } else {
+                description = 'Information manquante';
             }
             const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'images/unavailable.png';
+
+            const isBookmarked = pochList.some(item => item.id === id);
+            const bookmarkButtonHtml = isBookmarked
+                ? `<button class="button-icon bookmark-button"><img src="images/saved.png" alt="Saved"></button>`
+                : `<button class="button-icon bookmark-button"><img src="images/save.png" alt="Bookmark"></button>`;
 
             bookElement.innerHTML = `
                 <h3>${title}</h3>
@@ -134,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>Auteur:</strong> ${author}</p>
                 <p>${description}</p>
                 <img src="${image}" alt="Couverture du livre" class="book-cover">
-                <button class="bookmark-button">Bookmark</button>
+                ${bookmarkButtonHtml}
             `;
 
             // Add event listener to bookmark button
@@ -173,33 +180,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayPochList() {
         hidePochList();
-
+    
         const pochListDiv = document.querySelector('#content');
-        const pochListContent = document.createElement('div');
+        let pochListContent = document.querySelector('.pochlist-content');
+        if (pochListContent) {
+            pochListContent.remove(); // Remove existing content
+        }
+        pochListContent = document.createElement('div');
         pochListContent.className = 'pochlist-content';
         pochListDiv.appendChild(pochListContent);
-
+    
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
-
+    
         if (pochList.length === 0) {
             pochListContent.innerHTML = '<p>Aucun livre n’a été ajouté à votre poch\'liste.</p>';
             return;
         }
-
+    
         pochList.forEach(book => {
             const bookElement = document.createElement('div');
             bookElement.className = 'book';
-
+    
             bookElement.innerHTML = `
                 <h3>${book.title}</h3>
                 <p><strong>ID:</strong> ${book.id}</p>
                 <p><strong>Auteur:</strong> ${book.author}</p>
                 <p>${book.description}</p>
                 <img src="${book.image}" alt="Couverture du livre" class="book-cover">
+                <button class="button-icon delete-button"><img src="images/trash.png" alt="Supprimer"></button>
             `;
-
+    
+            // Add event listener to delete button
+            bookElement.querySelector('.delete-button').addEventListener('click', () => removeFromPochList(book.id));
+    
             pochListContent.appendChild(bookElement);
         });
+    }    
+
+    function removeFromPochList(bookId) {
+        let pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
+        pochList = pochList.filter(book => book.id !== bookId);
+        sessionStorage.setItem('pochList', JSON.stringify(pochList));
+        displayPochList();
     }
 
     // Initial display of the poch'list on page load
