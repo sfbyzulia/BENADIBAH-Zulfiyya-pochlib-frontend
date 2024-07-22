@@ -1,71 +1,75 @@
+$primary-color: #469488;
+$secondary-color: #DF5A4B;
+$font-family: 'Roboto', sans-serif;
+
 .roboto-thin {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 100;
   font-style: normal;
 }
 
 .roboto-light {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 300;
   font-style: normal;
 }
 
 .roboto-regular {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 400;
   font-style: normal;
 }
 
 .roboto-medium {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 500;
   font-style: normal;
 }
 
 .roboto-bold {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 700;
   font-style: normal;
 }
 
 .roboto-black {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 900;
   font-style: normal;
 }
 
 .roboto-thin-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 100;
   font-style: italic;
 }
 
 .roboto-light-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 300;
   font-style: italic;
 }
 
 .roboto-regular-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 400;
   font-style: italic;
 }
 
 .roboto-medium-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 500;
   font-style: italic;
 }
 
 .roboto-bold-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 700;
   font-style: italic;
 }
 
 .roboto-black-italic {
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   font-weight: 900;
   font-style: italic;
 }
@@ -98,7 +102,7 @@ header {
   text-align: center;
   button {
     margin-bottom: 20px; // Space before the form
-    background-color: #469488; // Green color for the button
+    background-color: $primary-color; // Green color for the button
     color: white;
     padding: 15px 30px; // Larger padding for bigger button
     font-size: 18px; // Larger font size
@@ -130,7 +134,7 @@ header {
     border-radius: 4px;
   }
   button[type="submit"] {
-    background-color: #469488;
+    background-color: $primary-color;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -142,7 +146,7 @@ header {
     max-width: 200px;
   }
   button[type="button"] {
-    background-color: #DF5A4B;
+    background-color: $secondary-color;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -182,7 +186,7 @@ header {
 }
 
 .bookmark-button {
-  background-color: #469488;
+  background-color: $primary-color;
   border: none;
   color: white;
   padding: 10px 24px;
@@ -194,14 +198,6 @@ header {
   position: absolute;
   top: 10px;
   right: 10px;
-}
-
-.bookmark-button:hover {
-  background-color: #367a6a;
-}
-
-.bookmark-button:focus {
-  outline: 2px solid #ffffff;
 }
 
 // Style for book cover images
@@ -225,7 +221,7 @@ header {
 // Base styles for mobile
 body {
   padding: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-family;
 }
 
 // Media query for tablets

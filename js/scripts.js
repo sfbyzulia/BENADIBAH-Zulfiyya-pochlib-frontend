@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         searchForm.innerHTML = `
             <fieldset>
                 <label for="bookTitle">Titre du livre</label>
-                <input type="text" id="bookTitle" required>
+                <input type="text" id="bookTitle">
                 <label for="bookAuthor">Auteur</label>
-                <input type="text" id="bookAuthor" required>
+                <input type="text" id="bookAuthor">
                 <button type="submit">Rechercher</button>
                 <button type="button" id="cancelButton">Annuler</button>
             </fieldset>
@@ -65,14 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function searchBooks() {
-        const title = document.getElementById('bookTitle').value;
-        const author = document.getElementById('bookAuthor').value;
+        let title = document.getElementById('bookTitle').value.trim();
+        let author = document.getElementById('bookAuthor').value.trim();
+
+        if (title === '' && author === '') {
+            alert('Veuillez entrer un titre ou un auteur.');
+            return;
+    }
+
+        let query = '';
+        if (title !== '') {
+            query += `intitle:${title}`;
+        }
+        if (author !== '') {
+            if (query !== '') {
+                query += '+';
+            }
+            query += `inauthor:${author}`;
+        }
 
         fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${title}+inauthor:${author}`)
             .then(response => response.json())
-            .then(data => {
-                displaySearchResults(data.items);
-            });
+            .then(data => displaySearchResults(data.items))
+            .catch(error => console.error('Erreur lors de la recherche des livres :', error));
     }
 
     function displaySearchResults(books) {
@@ -100,11 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = book.id;
             const title = book.volumeInfo.title;
             const author = book.volumeInfo.authors[0];
-            const description = book.volumeInfo.description ?
-                (book.volumeInfo.description.length > 200 ?
-                    book.volumeInfo.description.substring(0, 200) + '...' :
-                    book.volumeInfo.description
-                ) : 'Information manquante';
+            let description;
+
+             if (book.volumeInfo.description) {
+                 if (book.volumeInfo.description.length > 200) {
+                     description = book.volumeInfo.description.substring(0, 200) + '...';
+                  } else {
+                      description = book.volumeInfo.description;
+                  }
+             } else {
+                    description = 'Information manquante';
+            }
             const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'images/unavailable.png';
 
             bookElement.innerHTML = `
