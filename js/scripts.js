@@ -96,29 +96,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (searchResults) {
             searchResults.remove();
         }
-
+    
         // Create a new container for search results
         searchResults = document.createElement('div');
         searchResults.id = 'searchResults';
         myBooksDiv.insertBefore(searchResults, myBooksDiv.querySelector('hr'));
-
+    
         if (!books || books.length === 0) {
             searchResults.textContent = 'Aucun livre n’a été trouvé';
             return;
         }
-
+    
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
-
+    
         books.forEach(book => {
             const bookElement = document.createElement('div');
             bookElement.className = 'book';
-
+    
             // Extract book details
             const id = book.id;
             const title = book.volumeInfo.title;
             const author = book.volumeInfo.authors[0];
             let description;
-
+    
             if (book.volumeInfo.description) {
                 if (book.volumeInfo.description.length > 200) {
                     description = book.volumeInfo.description.substring(0, 200) + '...';
@@ -129,12 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 description = 'Information manquante';
             }
             const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'images/unavailable.png';
-
+    
             const isBookmarked = pochList.some(item => item.id === id);
             const bookmarkButtonHtml = isBookmarked
                 ? `<button class="button-icon bookmark-button"><img src="images/saved.png" alt="Saved"></button>`
-                : `<button class="button-icon bookmark-button"><img src="images/save.png" alt="Bookmark"></button>`;
-
+                : `<button class="button-icon bookmark-button"><img src="images/save.png" alt="Save"></button>`;
+    
             bookElement.innerHTML = `
                 <h3>${title}</h3>
                 <p><strong>ID:</strong> ${id}</p>
@@ -143,15 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${image}" alt="Couverture du livre" class="book-cover">
                 ${bookmarkButtonHtml}
             `;
-
+    
+            const bookmarkButton = bookElement.querySelector('.bookmark-button');
+    
             // Add event listener to bookmark button
-            bookElement.querySelector('.bookmark-button').addEventListener('click', () => saveToPochList(id, title, author, description, image));
-
+            bookmarkButton.addEventListener('click', () => {
+                saveToPochList(id, title, author, description, image, bookmarkButton);
+            });
+    
             searchResults.appendChild(bookElement);
         });
-    }
+    }    
 
-    function saveToPochList(id, title, author, description, image) {
+    function saveToPochList(id, title, author, description, image, buttonElement) {
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
         
         // Check if the book is already in the poch'liste
@@ -163,7 +167,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const newBook = { id, title, author, description, image };
         pochList.push(newBook);
         sessionStorage.setItem('pochList', JSON.stringify(pochList));
+
+        // Update the button to show it's saved
+        buttonElement.innerHTML = `<img src="images/saved.png" alt="Saved">`;
+        buttonElement.classList.add('saved');
+
+        // Force a partial refresh of the search results to update the bookmark buttons
+        refreshSearchResults();
     }
+
+    function refreshSearchResults() {
+        const searchResults = document.getElementById('searchResults');
+        if (!searchResults) return;
+    
+        // Get current search query
+        const title = document.getElementById('bookTitle').value.trim();
+        const author = document.getElementById('bookAuthor').value.trim();
+    
+        let query = '';
+        if (title !== '') {
+            query += `intitle:${title}`;
+        }
+        if (author !== '') {
+            if (query !== '') {
+                query += '+';
+            }
+            query += `inauthor:${author}`;
+        }
+    
+        // Fetch and redisplay the search results
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+            .then(response => response.json())
+            .then(data => displaySearchResults(data.items))
+            .catch(error => console.error('Erreur lors de la recherche des livres :', error));
+    }    
 
     function showPochList() {
         // Hide the search form and search results

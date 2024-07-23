@@ -168,6 +168,12 @@ header {
   justify-content: space-between;
 }
 
+.pochlist-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .book {
   position: relative; // Ensure this is relative for absolute positioning of buttons
   border: 1px solid #ccc;

@@ -163,6 +163,12 @@ header img {
   justify-content: space-between;
 }
 
+.pochlist-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .book {
   position: relative;
   border: 1px solid #ccc;
