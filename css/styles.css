@@ -70,14 +70,8 @@
   font-style: italic;
 }
 
-header {
-  text-align: center;
-  padding: 20px 0;
-}
 header img {
-  display: block;
-  margin: 0 auto;
-  max-width: 200px;
+  display: none;
 }
 
 .title-container {

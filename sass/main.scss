@@ -74,14 +74,8 @@ $font-family: 'Roboto', sans-serif;
   font-style: italic;
 }
 
-header {
-  text-align: center;
-  padding: 20px 0;
-  img {
-    display: block;
-    margin: 0 auto;
-    max-width: 200px; // Ensures logo does not exceed the screen width
-  }
+header img {
+  display: none;
 }
 
 .title-container {
@@ -195,7 +189,7 @@ header {
   margin: 5px 0;
 }
 
-// New styles for buttons "Save", "Saved" and "Delete"
+// New styles for buttons "Save" and "Delete"
 .button-icon {
   border: none;
   background: none;
