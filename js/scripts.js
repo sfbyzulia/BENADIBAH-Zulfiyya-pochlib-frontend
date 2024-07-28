@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-        // Set the favicon (icon in the browser tab)
-        const link = document.createElement('link');
-        link.rel = 'icon';
-        link.href = 'images/logo.png'; 
-        document.head.appendChild(link);
-        
+    // Set the favicon (icon in the browser tab)
+    const link = document.createElement('link');
+    link.rel = 'icon';
+    link.href = 'images/logo.png'; 
+    document.head.appendChild(link);
+
     const myBooksDiv = document.getElementById('myBooks');
     const contentDiv = document.getElementById('content');
 
@@ -90,29 +90,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (searchResults) {
             searchResults.remove();
         }
-    
+
         // Create a new container for search results
         searchResults = document.createElement('div');
         searchResults.id = 'searchResults';
         myBooksDiv.insertBefore(searchResults, myBooksDiv.querySelector('hr'));
-    
+
         if (!books || books.length === 0) {
             searchResults.textContent = 'Aucun livre n’a été trouvé';
             return;
         }
-    
+
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
-    
+
         books.forEach(book => {
             const bookElement = document.createElement('div');
             bookElement.className = 'book';
-    
+
             // Extract book details
             const id = book.id;
             const title = book.volumeInfo.title;
             const author = book.volumeInfo.authors[0];
             let description;
-    
+
             if (book.volumeInfo.description) {
                 if (book.volumeInfo.description.length > 200) {
                     description = book.volumeInfo.description.substring(0, 200) + '...';
@@ -123,46 +123,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 description = 'Information manquante';
             }
             const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'images/unavailable.png';
-    
+
+            const isBookmarked = pochList.some(item => item.id === id);
             const bookmarkButtonHtml = `<button class="button-icon bookmark-button"><img src="images/save.png" alt="Save"></button>`;
-    
+
             bookElement.innerHTML = `
                 <h3>${title}</h3>
-                <p><strong>ID:</strong> ${id}</p>
+                <p><strong>ID:</strong> <strong>${id}</strong></p>
                 <p><strong>Auteur:</strong> ${author}</p>
                 <p>${description}</p>
                 <img src="${image}" alt="Couverture du livre" class="book-cover">
                 ${bookmarkButtonHtml}
             `;
-    
+
             const bookmarkButton = bookElement.querySelector('.bookmark-button');
-    
+
             // Add event listener to bookmark button
             bookmarkButton.addEventListener('click', () => {
                 saveToPochList(id, title, author, description, image, bookmarkButton);
             });
-    
+
             searchResults.appendChild(bookElement);
         });
-    }     
-    
+    }
+
     function saveToPochList(id, title, author, description, image, buttonElement) {
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
-    
+
         // Check if the book is already in the poch'liste
         if (pochList.some(book => book.id === id)) {
             alert('Vous ne pouvez ajouter deux fois le même livre');
             return;
         }
-    
+
         const newBook = { id, title, author, description, image };
         pochList.push(newBook);
         sessionStorage.setItem('pochList', JSON.stringify(pochList));
-    
+
         // Update the poch'liste dynamically
         displayPochList();
     }
-    
+
     function displayPochList() {
         const pochListDiv = document.querySelector('#content');
         let pochListContent = document.querySelector('.pochlist-content');
@@ -186,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             bookElement.innerHTML = `
                 <h3>${book.title}</h3>
-                <p><strong>ID:</strong> ${book.id}</p>
+                <p><strong>ID:</strong> <strong>${book.id}</strong></p>
                 <p><strong>Auteur:</strong> ${book.author}</p>
                 <p>${book.description}</p>
                 <img src="${book.image}" alt="Couverture du livre" class="book-cover">

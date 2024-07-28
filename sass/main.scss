@@ -90,6 +90,7 @@ header img {
   padding: 10px 0;
   border-radius: 5px;
   text-align: center;
+  font-weight: normal;
 }
 
 #myBooks {
@@ -109,48 +110,46 @@ header img {
 }
 
 #searchForm {
-  text-align: left;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 970px; /* Increase the max width */
+  margin: 0; /* Remove auto centering */
+  margin-left: -13px; /* Adjust the margin to move it left */
   border: none;
+  padding-left: 0px; /* Ensure it's aligned with the title */
   fieldset {
     border: none;
   }
   label {
     display: block;
     margin-bottom: 5px;
+    text-align: left; /* Align labels to the left */
+    margin-left: 10px; /* Add margin to move the labels to the right */
   }
   input[type="text"] {
-    width: 100%;
-    margin-bottom: 15px;
+    width: 100%; /* Increase the width */
+    margin-bottom: 25px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+  button[type="submit"],
+  button[type="button"] {
+    display: block;
+    width: 200px; /* Fixed width for the buttons */
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
   button[type="submit"] {
     background-color: $primary-color;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    display: block;
-    width: 100%;
-    max-width: 200px;
+    margin-bottom: 20px; /* Increase margin between the buttons */
   }
   button[type="button"] {
     background-color: $secondary-color;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 10px;
+    margin-top: 10px; /* Increase top margin to balance out the increased space */
   }
 }
 
@@ -179,14 +178,16 @@ header img {
   width: calc(50% - 20px); // Adjust to fit two books per row
   box-sizing: border-box;
   text-align: left; // Ensure text is left-aligned within each book element
+  background-color: #E0E0E0; // Adding the grey background color
 }
 
 .book h3 {
   margin-top: 0;
 }
 
-.book p {
-  margin: 5px 0;
+.book p strong {
+  font-style: italic;
+  font-weight: bold;
 }
 
 // New styles for buttons "Save" and "Delete"
