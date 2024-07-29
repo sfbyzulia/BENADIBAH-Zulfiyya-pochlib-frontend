@@ -1,71 +1,58 @@
-.roboto-thin {
+.roboto-black-italic, .roboto-bold-italic, .roboto-medium-italic, .roboto-regular-italic, .roboto-light-italic, .roboto-thin-italic, .roboto-black, .roboto-bold, .roboto-medium, .roboto-regular, .roboto-light, .roboto-thin {
   font-family: "Roboto", sans-serif;
-  font-weight: 100;
   font-style: normal;
+}
+
+.roboto-thin {
+  font-weight: 100;
 }
 
 .roboto-light {
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  font-style: normal;
 }
 
 .roboto-regular {
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
 
 .roboto-medium {
-  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-style: normal;
 }
 
 .roboto-bold {
-  font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-style: normal;
 }
 
 .roboto-black {
-  font-family: "Roboto", sans-serif;
   font-weight: 900;
-  font-style: normal;
 }
 
 .roboto-thin-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-style: italic;
 }
 
 .roboto-light-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: italic;
 }
 
 .roboto-regular-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
 .roboto-medium-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: italic;
 }
 
 .roboto-bold-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-style: italic;
 }
 
 .roboto-black-italic {
-  font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-style: italic;
 }
@@ -74,43 +61,43 @@ header img {
   display: none;
 }
 
-.title-container {
-  width: 100%;
-  max-width: 750px;
-  margin: 10px auto;
-}
-
 .title {
   background-color: #f0f0f0;
-  display: block;
-  padding: 10px 0;
-  border-radius: 5px;
-  text-align: center;
   font-weight: normal;
+  font-size: 25px;
+  height: 35px;
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  text-align: center;
+  border: 1px solid #d8d7d7;
+  border-bottom: 1px solid #b9b8b8;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#myBooks {
-  text-align: center;
-}
-#myBooks .main-button {
+.main-button {
   margin-bottom: 20px;
   background-color: #469488;
   color: white;
-  padding: 15px 30px;
+  padding: 15px 35px;
   font-size: 18px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
   display: block;
   margin: 0 auto;
+  max-width: 200px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 20px;
 }
 
 #searchForm {
-  max-width: 970px; /* Increase the max width */
-  margin: 0; /* Remove auto centering */
-  margin-left: -13px; /* Adjust the margin to move it left */
+  max-width: 970px;
+  margin-left: -13px;
   border: none;
-  padding-left: 0px; /* Ensure it's aligned with the title */
+  padding-left: 0;
 }
 #searchForm fieldset {
   border: none;
@@ -118,20 +105,22 @@ header img {
 #searchForm label {
   display: block;
   margin-bottom: 5px;
-  text-align: left; /* Align labels to the left */
-  margin-left: 10px; /* Add margin to move the labels to the right */
+  text-align: left;
+  margin-left: 10px;
+  font-size: 15px;
 }
 #searchForm input[type=text] {
-  width: 100%; /* Increase the width */
+  width: 100%;
+  margin-top: 10px;
   margin-bottom: 25px;
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid black;
 }
 #searchForm button[type=submit],
 #searchForm button[type=button] {
   display: block;
-  width: 200px; /* Fixed width for the buttons */
+  width: 170px;
+  height: 40px;
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -141,21 +130,23 @@ header img {
 #searchForm button[type=submit] {
   background-color: #469488;
   color: white;
-  margin-bottom: 20px; /* Increase margin between the buttons */
+  margin-bottom: 20px;
 }
 #searchForm button[type=button] {
   background-color: #DF5A4B;
   color: white;
-  margin-top: 10px; /* Increase top margin to balance out the increased space */
+  margin-top: 10px;
 }
 
-#searchResults {
+h2 {
+  font-weight: bold;
   margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 17px;
 }
 
+#searchResults,
 .pochlist-content {
   display: flex;
   flex-wrap: wrap;
@@ -164,25 +155,43 @@ header img {
 
 .book {
   position: relative;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
-  vertical-align: top;
-  width: calc(50% - 20px);
+  width: calc(50% - 30px); /* Two books per row */
   box-sizing: border-box;
   text-align: left;
-  background-color: #E0E0E0;
+  background-color: #E0E0E0; /* Gray background color */
 }
 
 .book h3 {
   margin-top: 0;
+  font-size: 15px;
 }
 
-.book p strong {
-  font-style: italic;
-  font-weight: bold;
+.book p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.book-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-cover,
+.unavailable-cover {
+  width: 128px;
+  height: 192px;
+  display: block;
+  margin: 10px auto; /* Center the image */
+  object-fit: cover;
 }
 
 .button-icon {
@@ -196,24 +205,8 @@ header img {
 }
 
 .button-icon img {
-  width: 20px;
-  height: 20px;
-}
-
-.book-cover {
-  width: 128px;
-  height: 192px;
-  display: block;
-  margin: 0 auto;
-  object-fit: cover;
-}
-
-.unavailable-cover {
-  width: 128px;
-  height: 192px;
-  display: block;
-  margin: 0 auto;
-  background-size: cover;
+  width: 30px;
+  height: 30px;
 }
 
 body {
@@ -225,7 +218,7 @@ body {
   body {
     padding: 20px;
   }
-  header, .title-container, #myBooks {
+  header, .title, #myBooks {
     max-width: 750px;
     margin: 0 auto;
   }
@@ -234,7 +227,7 @@ body {
   body {
     padding: 40px;
   }
-  header, .title-container, #myBooks {
+  header, .title, #myBooks {
     max-width: 960px;
   }
 }
@@ -242,6 +235,16 @@ body {
   .book {
     width: calc(100% - 20px);
   }
+}
+.hidden {
+  display: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #363636;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=styles.css.map */

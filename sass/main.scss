@@ -2,195 +2,231 @@ $primary-color: #469488;
 $secondary-color: #DF5A4B;
 $font-family: 'Roboto', sans-serif;
 
-.roboto-thin {
+// Font classes
+%roboto-font {
   font-family: $font-family;
-  font-weight: 100;
   font-style: normal;
+}
+
+.roboto-thin {
+  @extend %roboto-font;
+  font-weight: 100;
 }
 
 .roboto-light {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 300;
-  font-style: normal;
 }
 
 .roboto-regular {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 400;
-  font-style: normal;
 }
 
 .roboto-medium {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 500;
-  font-style: normal;
 }
 
 .roboto-bold {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 700;
-  font-style: normal;
 }
 
 .roboto-black {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 900;
-  font-style: normal;
 }
 
 .roboto-thin-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 100;
   font-style: italic;
 }
 
 .roboto-light-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 300;
   font-style: italic;
 }
 
 .roboto-regular-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 400;
   font-style: italic;
 }
 
 .roboto-medium-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 500;
   font-style: italic;
 }
 
 .roboto-bold-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 700;
   font-style: italic;
 }
 
 .roboto-black-italic {
-  font-family: $font-family;
+  @extend %roboto-font;
   font-weight: 900;
   font-style: italic;
 }
 
+// Header image hidden
 header img {
   display: none;
 }
 
-.title-container {
-  width: 100%;
-  max-width: 750px; // Same width as header content
-  margin: 10px auto; // Center the title block
-}
-
+// Title style
 .title {
   background-color: #f0f0f0; // Light grey background for the title
-  display: block;
-  padding: 10px 0;
-  border-radius: 5px;
-  text-align: center;
   font-weight: normal;
-}
-
-#myBooks {
+  font-size: 25px;
+  height: 35px;
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 0;
   text-align: center;
-  .main-button { // Specific class for the main button to keep the background color
-    margin-bottom: 20px; // Space before the form
-    background-color: $primary-color; // Green color for the button
-    color: white;
-    padding: 15px 30px; // Larger padding for bigger button
-    font-size: 18px; // Larger font size
-    border-radius: 8px; // Rounded corners
-    border: none;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-  }
+  border: 1px solid #d8d7d7;
+  border-bottom: 1px solid #b9b8b8; // Darker gray border on the bottom
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Shadow on bottom
 }
 
-#searchForm {
-  max-width: 970px; /* Increase the max width */
-  margin: 0; /* Remove auto centering */
-  margin-left: -13px; /* Adjust the margin to move it left */
+// Main button "Ajouter un livre"
+.main-button {
+  margin-bottom: 20px;
+  background-color: $primary-color;
+  color: white;
+  padding: 15px 35px;
+  font-size: 18px;
+  border-radius: 4px;
   border: none;
-  padding-left: 0px; /* Ensure it's aligned with the title */
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 20px;
+}
+
+// Search form
+#searchForm {
+  max-width: 970px;
+  margin-left: -13px;
+  border: none;
+  padding-left: 0;
+  
   fieldset {
     border: none;
   }
+
   label {
     display: block;
     margin-bottom: 5px;
-    text-align: left; /* Align labels to the left */
-    margin-left: 10px; /* Add margin to move the labels to the right */
+    text-align: left;
+    margin-left: 10px;
+    font-size: 15px;
   }
+
   input[type="text"] {
-    width: 100%; /* Increase the width */
+    width: 100%;
+    margin-top: 10px;
     margin-bottom: 25px;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid black;
   }
+
   button[type="submit"],
   button[type="button"] {
     display: block;
-    width: 200px; /* Fixed width for the buttons */
+    width: 170px;
+    height: 40px;
     font-size: 16px;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
   }
+
   button[type="submit"] {
     background-color: $primary-color;
     color: white;
-    margin-bottom: 20px; /* Increase margin between the buttons */
+    margin-bottom: 20px;
   }
+
   button[type="button"] {
     background-color: $secondary-color;
     color: white;
-    margin-top: 10px; /* Increase top margin to balance out the increased space */
+    margin-top: 10px;
   }
 }
 
-// Styles for search results
-#searchResults {
+// General h2 and p styles
+h2 {
+  font-weight: bold;
   margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 17px;
 }
 
+// Styles for search results
+#searchResults,
 .pochlist-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
+// Book styles
 .book {
-  position: relative; // Ensure this is relative for absolute positioning of buttons
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
+  position: relative;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
-  vertical-align: top;
-  width: calc(50% - 20px); // Adjust to fit two books per row
+  width: calc(50% - 30px); /* Two books per row */
   box-sizing: border-box;
-  text-align: left; // Ensure text is left-aligned within each book element
-  background-color: #E0E0E0; // Adding the grey background color
+  text-align: left;
+  background-color: #E0E0E0; /* Gray background color */
 }
 
 .book h3 {
   margin-top: 0;
+  font-size: 15px;
 }
 
-.book p strong {
-  font-style: italic;
-  font-weight: bold;
+.book p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 5px 0;
+  text-align: left;
 }
 
-// New styles for buttons "Save" and "Delete"
+// Ensuring that title and description are in a flex container
+.book-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// Book cover styles
+.book-cover,
+.unavailable-cover {
+  width: 128px;
+  height: 192px;
+  display: block;
+  margin: 10px auto; /* Center the image */
+  object-fit: cover;
+}
+
+// Button icon
 .button-icon {
   border: none;
   background: none;
@@ -202,26 +238,8 @@ header img {
 }
 
 .button-icon img {
-  width: 20px; // Adjust the size of the icons
-  height: 20px; // Adjust the size of the icons
-}
-
-// Style for book cover images
-.book-cover {
-  width: 128px; // Fixed width for consistency
-  height: 192px; // Fixed height for consistency
-  display: block;
-  margin: 0 auto;
-  object-fit: cover; // Ensures the image covers the entire area
-}
-
-// Additional style for unavailable images
-.unavailable-cover {
-  width: 128px;
-  height: 192px;
-  display: block;
-  margin: 0 auto;
-  background-size: cover;
+  width: 30px;
+  height: 30px;
 }
 
 // Base styles for mobile
@@ -230,32 +248,41 @@ body {
   font-family: $font-family;
 }
 
-// Media query for tablets
+// Media queries
 @media (min-width: 768px) {
   body {
     padding: 20px;
   }
 
-  header, .title-container, #myBooks {
+  header, .title, #myBooks {
     max-width: 750px;
-    margin: 0 auto; // Center the content
+    margin: 0 auto; // Center content
   }
 }
 
-// Media query for desktops
 @media (min-width: 1024px) {
   body {
-    padding: 40px; // More space on the sides for larger screens
+    padding: 40px;
   }
 
-  header, .title-container, #myBooks {
-    max-width: 960px; // Limit width to avoid elements being too stretched
+  header, .title, #myBooks {
+    max-width: 960px;
   }
 }
 
-// Media query for mobile devices
 @media (max-width: 767px) {
   .book {
-    width: calc(100% - 20px); // Adjust to fit one book per row on mobile devices
+    width: calc(100% - 20px); // One book per row on mobile
   }
+}
+
+.hidden {
+  display: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #363636;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
