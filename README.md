@@ -75,10 +75,10 @@ To run the application, open the index.html file in your preferred web browser. 
 
 ## Screenshots
 
-<p>
-  <img src="images/accueil.png" alt="Accueil" width="150" style="margin-right: 10px; vertical-align: top;"/>
-  <img src="images/recherche.png" alt="Recherche" width="150" style="margin-right: 10px; vertical-align: top;"/>
-  <img src="images/résultats.png" alt="Résultats" width="150" style="margin-right: 10px; vertical-align: top;"/>
-  <img src="images/pochlist.png" alt="Poch'liste" width="150" style="margin-right: 10px; vertical-align: top;"/>
-  <img src="images/accueil_pochlist.png" alt="Accueil avec Poch'liste" width="150" style="vertical-align: top;"/>
+<p style="display: flex; align-items: flex-start;">
+  <img src="images/accueil.png" alt="Accueil" width="150" style="margin-right: 10px;"/>
+  <img src="images/recherche.png" alt="Recherche" width="150" style="margin-right: 10px;"/>
+  <img src="images/résultats.png" alt="Résultats" width="150" style="margin-right: 10px;"/>
+  <img src="images/pochlist.png" alt="Poch'liste" width="150" style="margin-right: 10px; height: 150px; object-fit: cover;"/>
+  <img src="images/accueil_pochlist.png" alt="Accueil avec Poch'liste" width="150" style="height: 150px; object-fit: cover;"/>
 </p>
