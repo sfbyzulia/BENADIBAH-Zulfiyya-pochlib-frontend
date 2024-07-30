@@ -229,11 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const pochList = JSON.parse(sessionStorage.getItem('pochList')) || [];
 
-        if (pochList.length === 0) {
-            newPochListContainer.textContent = 'Aucune livre dans la poch\'liste';
-            return;
-        }
-
         pochList.forEach(book => {
             const bookElement = document.createElement('div');
             bookElement.className = 'book';
