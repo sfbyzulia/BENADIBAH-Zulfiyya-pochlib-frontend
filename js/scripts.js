@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bookElement.innerHTML = `
                 <div class="book-content">
                     <h3>${title}</h3>
-                    <p><strong>ID:</strong> <strong>${id}</strong></p>
+                    <p><strong>ID: <em>${id}</em></strong></p>
                     <p>Auteur: ${author}</p>
                     <p>${description}</p>
                 </div>
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bookElement.innerHTML = `
               <div class="book-content">
                   <h3>${book.title}</h3>
-                  <p><strong>ID:</strong> <strong>${book.id}</strong></p>
+                  <p><strong>ID: <em>${book.id}</em></strong></p>
                   <p>Auteur: ${book.author}</p>
                   <p>${book.description}</p>
               </div>

@@ -171,6 +171,11 @@ h2 {
   text-align: left;
 }
 
+.boook-content p em {
+  font-style: bold;
+  font-weight: bold;
+}
+
 .book-content {
   flex: 1;
   display: flex;
@@ -198,7 +203,7 @@ h2 {
 }
 
 .button-icon img {
-  width: 30px;
+  width: 20px;
   height: 30px;
 }
 
